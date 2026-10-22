@@ -77,11 +77,14 @@ npx playwright install chromium
 npm run test:e2e
 if ($LASTEXITCODE -ne 0) { throw 'Browser tests failed; inspect test-results before comparing.' }
 npm run test:ui-compare
+if ($LASTEXITCODE -ne 0) { throw 'Browser contract comparison failed. Preserve its reports.' }
+npm run test:desktop
+if ($LASTEXITCODE -ne 0) { throw 'Desktop-width verification failed. Preserve its reports.' }
 ```
 
 On Linux/macOS set `PYTHON_EXECUTABLE` to an absolute `.test-venv/bin/python` path and export the same test-backend variables. Some Linux hosts need `npx playwright install --with-deps chromium`; review its system-package changes first.
 
-The supplied config uses an isolated temporary index, one worker, no retries and separate desktop/mobile projects. The fake vector backend is an explicit controlled mode. To exercise native Chroma instead, use the fully installed runtime Python, set `RAG_TEST_VECTOR_BACKEND=real` and rerun deliberately.
+The shared workflow config uses an isolated temporary index, one worker, no retries and separate desktop/mobile projects. Desktop-only width scenarios are excluded from that comparison run and selected explicitly by `test:desktop`, which covers 1280, 1440 and 1920 pixels. CI runs both suites. Shared browser artifacts use `test-results/e2e`; desktop captures use `test-results/desktop`, so running the desktop suite retains the shared comparison reports. The fake vector backend is an explicit controlled mode. To exercise native Chroma instead, use the fully installed runtime Python, set `RAG_TEST_VECTOR_BACKEND=real` and rerun deliberately.
 
 Artifacts are written under `frontend/test-results/`. Comparators check each viewport against reviewed fixture expectations before checking equality; two identical wrong answers must fail. They verify source populations, operands, statuses, displayed values, warnings and citations. They are not pixel-diff accessibility certification.
 

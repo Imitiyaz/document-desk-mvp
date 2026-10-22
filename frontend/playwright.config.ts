@@ -10,6 +10,8 @@ import { join } from "node:path";
 const verificationDirectory = join(tmpdir(), `rag-browser-${Date.now()}`);
 export default defineConfig({
   testDir: "./e2e",
+  testIgnore: "**/desktop.spec.ts",
+  outputDir: "test-results/e2e",
   fullyParallel: false,
   workers: 1,
   // Do not turn an intermittent conversation failure into an apparently clean release gate.
