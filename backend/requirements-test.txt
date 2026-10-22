@@ -1,0 +1,10 @@
+# Author: Imitiyaz and AI Agent
+# Direct package pins; transitive dependencies remain resolver/platform dependent.
+-r requirements-core.txt
+pytest==9.1.1
+pytest-asyncio==1.4.0
+pytest-cov==7.1.0
+ruff==0.15.21
+black==26.5.1
+mypy==2.3.0
+reportlab==5.0.1

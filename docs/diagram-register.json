@@ -1,0 +1,114 @@
+[
+  {
+    "id": "ARC-01",
+    "title": "Runtime architecture and evidence paths",
+    "source": "ARCHITECTURE.md",
+    "kind": "Architecture",
+    "anchor": "runtime-components-and-evidence-paths"
+  },
+  {
+    "title": "How answers are produced",
+    "id": "OVR-01",
+    "source": "README.md",
+    "kind": "Flowchart",
+    "anchor": "how-answers-are-produced"
+  },
+  {
+    "title": "Local trust and data-transfer boundaries",
+    "id": "SEC-01",
+    "source": "SECURITY.md",
+    "kind": "Data flow / trust boundaries",
+    "anchor": "supported-boundary"
+  },
+  {
+    "title": "Conversations",
+    "id": "API-01",
+    "source": "docs/api.md",
+    "kind": "Sequence",
+    "anchor": "conversations"
+  },
+  {
+    "title": "Source ledger",
+    "id": "DATA-01",
+    "source": "docs/data-model.md",
+    "kind": "Entity relationship / data model",
+    "anchor": "source-ledger"
+  },
+  {
+    "title": "Document state",
+    "id": "DATA-02",
+    "source": "docs/data-model.md",
+    "kind": "State machine",
+    "anchor": "document-state"
+  },
+  {
+    "title": "Engineering decision gates and release ownership",
+    "id": "LIFE-01",
+    "source": "docs/development.md",
+    "kind": "Lifecycle process flow",
+    "anchor": "roles-and-decision-gates"
+  },
+  {
+    "title": "Implemented CI checks and manual release decision",
+    "id": "LIFE-02",
+    "source": "docs/development.md",
+    "kind": "CI flowchart",
+    "anchor": "ci-implemented-in-this-repository"
+  },
+  {
+    "title": "Container topology and data ownership",
+    "id": "DCK-01",
+    "source": "docs/docker.md",
+    "kind": "Deployment architecture",
+    "anchor": "container-topology"
+  },
+  {
+    "title": "Startup reconciliation of incomplete document writes",
+    "id": "OPS-01",
+    "source": "docs/operations.md",
+    "kind": "Recovery process flow",
+    "anchor": "interrupted-indexingdeletion"
+  },
+  {
+    "title": "Ingestion from bounded upload to ready document",
+    "id": "PIPE-01",
+    "source": "docs/pipeline.md",
+    "kind": "Process flow",
+    "anchor": "ingestion"
+  },
+  {
+    "title": "Query routing, clarification and honest fallback",
+    "id": "PIPE-02",
+    "source": "docs/pipeline.md",
+    "kind": "Flowchart",
+    "anchor": "query-routing"
+  },
+  {
+    "title": "From application URL to readable result and source inspection",
+    "id": "E2E-01",
+    "kind": "End-to-end process flow",
+    "source": "docs/journey.md",
+    "anchor": "browser-to-answer-process-flow"
+  },
+  {
+    "title": "URL load, optional indexing and a first or follow-up question",
+    "id": "E2E-02",
+    "kind": "End-to-end sequence",
+    "source": "docs/journey.md",
+    "anchor": "browser-to-answer-sequence"
+  },
+  {
+    "title": "Evidence data from upload bytes to an inspectable answer",
+    "id": "FLOW-01",
+    "kind": "Data flow",
+    "source": "docs/journey.md",
+    "anchor": "data-flow-and-retention"
+  },
+  {
+    "title": "Browser, API and persistence responsibilities across a document lifecycle",
+    "id": "SWIM-01",
+    "kind": "Swimlane",
+    "source": "docs/journey.md",
+    "anchor": "swimlane-responsibilities-for-indexing-and-removal"
+  }
+]

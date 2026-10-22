@@ -1,0 +1,53 @@
+{
+  "name": "rag-mvp-frontend",
+  "private": true,
+  "version": "0.3.8",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:ui-compare": "node tools/compare-ui.mjs && node tools/compare-intent.mjs && node tools/compare-pages.mjs",
+    "test:ui-checker": "node --test tools/compare-ui.test.mjs tools/compare-intent.test.mjs tools/compare-pages.test.mjs tools/capture-live.test.mjs",
+    "typecheck:browser-contract": "tsc --project tsconfig.e2e.json",
+    "typecheck": "tsc --noEmit",
+    "test:desktop": "playwright test --config playwright.desktop.config.ts",
+    "capture:live": "node tools/capture-live.mjs"
+  },
+  "dependencies": {
+    "axios": "1.20.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.64.1",
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/react": "16.3.3",
+    "@testing-library/user-event": "14.6.8",
+    "@types/node": "24.10.1",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "@vitest/coverage-v8": "5.0.5",
+    "eslint": "10.13.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-react-refresh": "0.5.7",
+    "jsdom": "30.1.3",
+    "prettier": "3.9.10",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.71.2",
+    "vite": "8.3.4",
+    "vitest": "5.0.5"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "author": "Imitiyaz and AI Agent",
+  "license": "AGPL-3.0-only"
+}

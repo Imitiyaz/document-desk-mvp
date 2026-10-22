@@ -1,0 +1,93 @@
+{
+  "_description": "Synthetic raw-model prompt evaluations with independently specified source facts. Lookup/refusal assertions and explicitly expected-failing synthesis cases are scoped to this diagnostic suite, not universal UI correctness.",
+  "questions": [
+    {
+      "id": "q1_north_q3_revenue",
+      "category": "lookup",
+      "question": "What was the Q3 revenue for the North region?",
+      "expected_source_file": "sample_sales.xlsx",
+      "expected_answer_contains": "45000",
+      "should_refuse": false
+    },
+    {
+      "id": "q2_south_q4_revenue",
+      "category": "lookup",
+      "question": "What was the Q4 revenue for the South region?",
+      "expected_source_file": "sample_sales.xlsx",
+      "expected_answer_contains": "39500",
+      "should_refuse": false
+    },
+    {
+      "id": "q3_east_q3_revenue_pdf",
+      "category": "lookup",
+      "question": "What was the Q3 revenue for the East region according to the report?",
+      "expected_source_file": "sample_report.pdf",
+      "expected_answer_contains": "41000",
+      "should_refuse": false,
+      "notes": "Known raw-model synthesis limitation: preserve every distinct supported value and its provenance; inspect xfail status. See docs/limitations.md."
+    },
+    {
+      "id": "q4_highest_growth_region_synthesis",
+      "category": "synthesis",
+      "question": "Which region had the strongest revenue growth from Q3 to Q4?",
+      "expected_source_file": "sample_sales.xlsx",
+      "expected_answer_contains": "North",
+      "should_refuse": false,
+      "notes": "Known raw-model synthesis limitation: preserve every distinct supported value and its provenance; inspect xfail status. See docs/limitations.md."
+    },
+    {
+      "id": "q7_lowest_q3_revenue_region_synthesis",
+      "category": "synthesis",
+      "question": "Which region had the lowest Q3 revenue?",
+      "expected_source_file": "sample_sales.xlsx",
+      "expected_answer_contains": "South",
+      "should_refuse": false,
+      "notes": "Added alongside q4 to broaden n=1 evidence into a small real sample before deciding whether cross-row synthesis is systemically unreliable. Tests MIN-finding (a single-metric ranking), a different synthesis skill than q4's growth-comparison. Marked xfail pending its own evaluation result -- unlike q4, this hasn't been run yet, so failing is not yet confirmed, only suspected given q4's result."
+    },
+    {
+      "id": "q8_total_q3_revenue_sum_synthesis",
+      "category": "synthesis",
+      "question": "What was the total combined Q3 revenue across all three regions?",
+      "expected_source_file": "sample_sales.xlsx",
+      "expected_answer_contains": "124000",
+      "should_refuse": false,
+      "notes": "Tests SUMMATION across rows (45000+38000+41000=124000), a different synthesis skill than comparison/ranking. Marked xfail pending its own evaluation result, same reasoning as q7."
+    },
+    {
+      "id": "q9_smallest_growth_region_synthesis",
+      "category": "synthesis",
+      "question": "Which region had the smallest revenue growth from Q3 to Q4?",
+      "expected_source_file": "sample_sales.xlsx",
+      "expected_answer_contains": "South",
+      "should_refuse": false,
+      "notes": "The inverse of q4 (smallest instead of largest growth) -- checks whether q4's failure was specific to 'strongest'-style superlatives or a general cross-row comparison weakness. Marked xfail pending its own evaluation result, same reasoning as q7."
+    },
+    {
+      "id": "q10_north_ambiguous_multiple_values",
+      "category": "ambiguous",
+      "question": "What was the Q3 revenue for the North region?",
+      "expected_source_file": "sample_sales_extended.xlsx",
+      "expected_answer_contains": null,
+      "should_refuse": false,
+      "notes": "Known raw-model synthesis limitation: preserve every distinct supported value and its provenance; inspect xfail status. See docs/limitations.md."
+    },
+    {
+      "id": "q5_out_of_scope_general_knowledge",
+      "category": "refusal",
+      "question": "What is the capital of France?",
+      "expected_source_file": null,
+      "expected_answer_contains": null,
+      "should_refuse": true,
+      "notes": "Known raw-model synthesis limitation: preserve every distinct supported value and its provenance; inspect xfail status. See docs/limitations.md."
+    },
+    {
+      "id": "q6_out_of_scope_unrelated_business_question",
+      "category": "refusal",
+      "question": "What was the company's total marketing spend last year?",
+      "expected_source_file": null,
+      "expected_answer_contains": null,
+      "should_refuse": true,
+      "notes": "Negative test -- plausible-sounding business question, but no marketing data exists in any fixture. Checks the model doesn't fabricate a number just because the question sounds answerable."
+    }
+  ]
+}

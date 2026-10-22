@@ -1,0 +1,45 @@
+# Author: Imitiyaz and AI Agent
+# Project: RAG MVP
+[tool.ruff]
+# Must match black's line length exactly, or the two tools fight each
+# other's formatting decisions. 88 is black's own default -- made
+# explicit here rather than left implicit, now that ruff's config is
+# being made explicit too.
+line-length = 88
+
+[tool.ruff.lint]
+# A deliberately chosen, moderate rule set -- not ruff's own defaults,
+# which grow (and therefore change project-wide pass/fail behavior)
+# across versions with no action from anyone in this project. See
+# docs/decisions/tooling-version-pinning.md for the rationale behind
+# explicit tool version selection.
+#
+# E  = pycodestyle errors (real style issues)
+# F  = pyflakes (real correctness issues: unused imports/vars, undefined names)
+# I  = isort (import ordering/grouping)
+# B  = flake8-bugbear (likely-bug patterns, e.g. mutable default arguments)
+# UP = pyupgrade (modern Python syntax, e.g. `list[int]` over `List[int]`)
+select = ["E", "F", "I", "B", "UP"]
+
+# E501 (line too long) is deliberately not selected -- black already
+# owns line-length enforcement; letting ruff also flag it is redundant
+# and can disagree with black's own wrapping decisions in edge cases.
+ignore = ["E501"]
+
+# Deliberately NOT selected, with reasons -- not silently omitted:
+# - RUF (ruff-specific rules, e.g. RUF022 "__all__ is not sorted"): this
+#   project's __all__ lists are intentionally grouped by pipeline stage
+#   for readability (see any app/*/​__init__.py), not alphabetically.
+#   Enabling RUF022 would fight a deliberate project convention.
+# - DTZ (flake8-datetimez, requires tzinfo on every datetime): this is a
+#   local-only MVP with no timezone-sensitive requirements. Naive
+#   datetimes in test fixtures and internal logging are intentional,
+#   not oversights.
+# - ISC (implicit string concatenation rules): no strong case either
+#   way yet for this codebase's style; revisit if it flags a real issue.
+
+[tool.ruff.lint.isort]
+known-first-party = ["app", "tests", "tools"]
+
+[tool.black]
+line-length = 88

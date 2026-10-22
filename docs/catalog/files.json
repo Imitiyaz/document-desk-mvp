@@ -1,0 +1,1496 @@
+{
+  "schema_version": 1,
+  "scope": "all_shipped_source_files_excludes_runtime_private_and_generated_results",
+  "files": [
+    {
+      "path": ".dockerignore",
+      "category": "project",
+      "purpose": "Exclude private data, caches and development outputs from image build contexts"
+    },
+    {
+      "path": ".env.example",
+      "category": "project",
+      "purpose": "Non-secret example environment variables; copy locally, never commit real credentials"
+    },
+    {
+      "path": ".gitattributes",
+      "category": "project",
+      "purpose": "Repository text/binary and line-ending policy"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "category": "project",
+      "purpose": "Bug report — reproducible application failure"
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "category": "project",
+      "purpose": "Scheduled dependency-update pull requests for pip, npm and GitHub Actions; no automatic merge"
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "category": "project",
+      "purpose": "Pull request — behavior, design and verification"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "category": "project",
+      "purpose": "Read-only repository/backend/frontend/browser CI; no automatic publication"
+    },
+    {
+      "path": ".gitignore",
+      "category": "project",
+      "purpose": "Exclude environments, indexes, credentials, private notes and generated reports"
+    },
+    {
+      "path": ".pre-commit-config.yaml",
+      "category": "project",
+      "purpose": "Optional local quality hooks aligned with the project tools"
+    },
+    {
+      "path": ".vscode/extensions.json",
+      "category": "project",
+      "purpose": "Recommended editor extensions for Python, React/TypeScript, linting and formatting"
+    },
+    {
+      "path": ".vscode/settings.json",
+      "category": "project",
+      "purpose": "Portable VS Code interpreter, test, analysis and formatting configuration"
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "category": "project",
+      "purpose": "Document Desk MVP — architecture"
+    },
+    {
+      "path": "AUTHORS.md",
+      "category": "project",
+      "purpose": "Authors and attribution"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "category": "project",
+      "purpose": "Changelog"
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "category": "project",
+      "purpose": "Community conduct"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "category": "project",
+      "purpose": "Contributing"
+    },
+    {
+      "path": "LICENSE",
+      "category": "project",
+      "purpose": "Complete GNU AGPL version 3 license text for the original application"
+    },
+    {
+      "path": "LICENSE-NOTICE.md",
+      "category": "project",
+      "purpose": "Application license and source availability"
+    },
+    {
+      "path": "PROJECT_MAP.md",
+      "category": "project",
+      "purpose": "Project map — find documentation and every source file"
+    },
+    {
+      "path": "README.md",
+      "category": "project",
+      "purpose": "Document Desk MVP — ask your documents, check the answer"
+    },
+    {
+      "path": "SECURITY.md",
+      "category": "project",
+      "purpose": "Security and privacy"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "category": "project",
+      "purpose": "Third-party components and models"
+    },
+    {
+      "path": "backend/Dockerfile",
+      "category": "backend-tooling",
+      "purpose": "Container image build and runtime entrypoint for backend"
+    },
+    {
+      "path": "backend/app/__init__.py",
+      "category": "backend",
+      "purpose": "Package marker for backend.app; no resources are initialized on import."
+    },
+    {
+      "path": "backend/app/api/__init__.py",
+      "category": "backend",
+      "purpose": "Stage 10 HTTP contracts and orchestration; loaders remain format-specific."
+    },
+    {
+      "path": "backend/app/api/dependencies.py",
+      "category": "backend",
+      "purpose": "FastAPI dependency access to resources constructed by application lifespan."
+    },
+    {
+      "path": "backend/app/api/errors.py",
+      "category": "backend",
+      "purpose": "Exception-to-HTTP mapping shared by all routes, without leaking internal paths."
+    },
+    {
+      "path": "backend/app/api/middleware.py",
+      "category": "backend",
+      "purpose": "Bound request bodies before multipart parsing can spool an unlimited upload."
+    },
+    {
+      "path": "backend/app/api/routes.py",
+      "category": "backend",
+      "purpose": "HTTP endpoints; expensive synchronous work runs in FastAPI's worker thread pool."
+    },
+    {
+      "path": "backend/app/api/schemas.py",
+      "category": "backend",
+      "purpose": "Pydantic HTTP schemas, separate from the pipeline's dataclass contracts."
+    },
+    {
+      "path": "backend/app/api/service.py",
+      "category": "backend",
+      "purpose": "Compose ingestion and answering behind injectable, application-scoped ports."
+    },
+    {
+      "path": "backend/app/api/uploads.py",
+      "category": "backend",
+      "purpose": "Portable upload names and bounded copying; temporary files never become IDs."
+    },
+    {
+      "path": "backend/app/api/workspace.py",
+      "category": "backend",
+      "purpose": "Coordinate document and chat lifecycle across the source ledger and vectors."
+    },
+    {
+      "path": "backend/app/chunking/__init__.py",
+      "category": "backend",
+      "purpose": "Stage 3: Chunking. Public entrypoint is `chunk_document()`."
+    },
+    {
+      "path": "backend/app/chunking/chunker.py",
+      "category": "backend",
+      "purpose": "Stage 3 orchestrator: `chunk_document()` composes row-aware table"
+    },
+    {
+      "path": "backend/app/chunking/models.py",
+      "category": "backend",
+      "purpose": "The Stage 3 -> Stage 4 contract: a single, uniform Chunk type."
+    },
+    {
+      "path": "backend/app/chunking/prose_chunker.py",
+      "category": "backend",
+      "purpose": "Splits narrative (non-tabular) text into embeddable chunks."
+    },
+    {
+      "path": "backend/app/chunking/row_chunker.py",
+      "category": "backend",
+      "purpose": "Row-aware chunking for tabular data -- the correctness-critical stage"
+    },
+    {
+      "path": "backend/app/cleaning/__init__.py",
+      "category": "backend",
+      "purpose": "Stage 2: Cleaning. Public entrypoint is `clean_document()`."
+    },
+    {
+      "path": "backend/app/cleaning/cell_semantics.py",
+      "category": "backend",
+      "purpose": "Retain standard Excel numeric units without evaluating formulas/display rounding."
+    },
+    {
+      "path": "backend/app/cleaning/cleaner.py",
+      "category": "backend",
+      "purpose": "Stage 2 orchestrator: `clean_document()` composes every cleaning step"
+    },
+    {
+      "path": "backend/app/cleaning/header_footer.py",
+      "category": "backend",
+      "purpose": "Detects and strips repeated running headers/footers from PDF narrative"
+    },
+    {
+      "path": "backend/app/cleaning/row_cleaning.py",
+      "category": "backend",
+      "purpose": "Normalize source cells without guessing missing values."
+    },
+    {
+      "path": "backend/app/cleaning/table_dedup.py",
+      "category": "backend",
+      "purpose": "Resolves the known limitation documented in `app/loaders/pdf_loader.py`:"
+    },
+    {
+      "path": "backend/app/cleaning/text_cleaning.py",
+      "category": "backend",
+      "purpose": "Text normalization primitives."
+    },
+    {
+      "path": "backend/app/conversation.py",
+      "category": "backend",
+      "purpose": "Retain acknowledged request constraints for bounded document follow-ups."
+    },
+    {
+      "path": "backend/app/core/__init__.py",
+      "category": "backend",
+      "purpose": "Package marker for backend.app.core; no resources are initialized on import."
+    },
+    {
+      "path": "backend/app/core/config.py",
+      "category": "backend",
+      "purpose": "Application configuration, loaded from environment variables / .env."
+    },
+    {
+      "path": "backend/app/core/exceptions.py",
+      "category": "backend",
+      "purpose": "Custom exceptions for the pipeline."
+    },
+    {
+      "path": "backend/app/core/logging_config.py",
+      "category": "backend",
+      "purpose": "Centralized logging configuration using loguru."
+    },
+    {
+      "path": "backend/app/embedding/__init__.py",
+      "category": "backend",
+      "purpose": "Stage 4: Embedding. Public exports: Embedder, EmbeddedChunk."
+    },
+    {
+      "path": "backend/app/embedding/embedder.py",
+      "category": "backend",
+      "purpose": "Adapt an embedding model behind a small injectable application interface."
+    },
+    {
+      "path": "backend/app/embedding/models.py",
+      "category": "backend",
+      "purpose": "The Stage 4 -> Stage 5 contract: a Chunk with its embedding vector"
+    },
+    {
+      "path": "backend/app/generation/__init__.py",
+      "category": "backend",
+      "purpose": "Stage 7: Prompt assembly -- turns a question + retrieved chunks into"
+    },
+    {
+      "path": "backend/app/generation/answer_presenter.py",
+      "category": "backend",
+      "purpose": "Compose readable table answers from verified records and computed results."
+    },
+    {
+      "path": "backend/app/generation/citation_resolver.py",
+      "category": "backend",
+      "purpose": "Resolves the `[N]` citation markers in an LLM's answer back to the"
+    },
+    {
+      "path": "backend/app/generation/entity_guard.py",
+      "category": "backend",
+      "purpose": "Conservative literal subject checks for bounded narrative extraction."
+    },
+    {
+      "path": "backend/app/generation/grounded.py",
+      "category": "backend",
+      "purpose": "Select complete original source sentences, with labelled excerpt fallback."
+    },
+    {
+      "path": "backend/app/generation/llm_client.py",
+      "category": "backend",
+      "purpose": "Wraps Ollama's HTTP API behind a clean, testable, retryable client."
+    },
+    {
+      "path": "backend/app/generation/models.py",
+      "category": "backend",
+      "purpose": "The Stage 7 -> Stage 8/9 contract: what prompt assembly produces."
+    },
+    {
+      "path": "backend/app/generation/prompt_builder.py",
+      "category": "backend",
+      "purpose": "Assembles the exact prompt sent to the LLM from a user's question and"
+    },
+    {
+      "path": "backend/app/generation/record_renderer.py",
+      "category": "backend",
+      "purpose": "Render selected context records without trusting model-written values or order."
+    },
+    {
+      "path": "backend/app/loaders/__init__.py",
+      "category": "backend",
+      "purpose": "Loader registry and format dispatcher."
+    },
+    {
+      "path": "backend/app/loaders/base.py",
+      "category": "backend",
+      "purpose": "Abstract base class defining the loader interface."
+    },
+    {
+      "path": "backend/app/loaders/pdf_loader.py",
+      "category": "backend",
+      "purpose": "PDF document loader."
+    },
+    {
+      "path": "backend/app/loaders/xlsx_loader.py",
+      "category": "backend",
+      "purpose": "Excel XLSX/XLSM extraction with physical row/cell provenance."
+    },
+    {
+      "path": "backend/app/main.py",
+      "category": "backend",
+      "purpose": "FastAPI entrypoint: import is cheap; real models are loaded in lifespan."
+    },
+    {
+      "path": "backend/app/maintenance.py",
+      "category": "backend",
+      "purpose": "Offline workspace backup/restore. Stop all API writers before using this tool."
+    },
+    {
+      "path": "backend/app/models/__init__.py",
+      "category": "backend",
+      "purpose": "Package marker for backend.app.models; no resources are initialized on import."
+    },
+    {
+      "path": "backend/app/models/cleaned.py",
+      "category": "backend",
+      "purpose": "Data models representing *cleaned* document content."
+    },
+    {
+      "path": "backend/app/models/extracted.py",
+      "category": "backend",
+      "purpose": "Data models representing content extracted from source documents."
+    },
+    {
+      "path": "backend/app/retrieval/__init__.py",
+      "category": "backend",
+      "purpose": "Stage 6: Retriever -- embeds a query and returns ranked, citable"
+    },
+    {
+      "path": "backend/app/retrieval/models.py",
+      "category": "backend",
+      "purpose": "The Stage 6 -> Stage 7 contract: what a retrieval query returns."
+    },
+    {
+      "path": "backend/app/retrieval/retriever.py",
+      "category": "backend",
+      "purpose": "Turns a natural-language question into a ranked list of the most"
+    },
+    {
+      "path": "backend/app/structured/__init__.py",
+      "category": "backend",
+      "purpose": "Complete source records and deterministic table answering."
+    },
+    {
+      "path": "backend/app/structured/aggregation.py",
+      "category": "backend",
+      "purpose": "Calculate available-value sums without inventing missing operands."
+    },
+    {
+      "path": "backend/app/structured/continuation.py",
+      "category": "backend",
+      "purpose": "Apply the explicitly approved Region-continuation view at read time."
+    },
+    {
+      "path": "backend/app/structured/cross_scope.py",
+      "category": "backend",
+      "purpose": "Explicit compatibility checks for unions and one-key, two-period comparisons."
+    },
+    {
+      "path": "backend/app/structured/engine.py",
+      "category": "backend",
+      "purpose": "Plan supported table questions from complete physical source records."
+    },
+    {
+      "path": "backend/app/structured/grouped.py",
+      "category": "backend",
+      "purpose": "Preserve requested entity groups, scopes and contributor provenance."
+    },
+    {
+      "path": "backend/app/structured/intent.py",
+      "category": "backend",
+      "purpose": "Bounded schema-aware entity phrases and aggregation wording."
+    },
+    {
+      "path": "backend/app/structured/scopes.py",
+      "category": "backend",
+      "purpose": "One source-alias contract for selection, replacement and conversation reuse."
+    },
+    {
+      "path": "backend/app/structured/store.py",
+      "category": "backend",
+      "purpose": "Persist complete source rows independently of retrieval fragments."
+    },
+    {
+      "path": "backend/app/vectorstore/__init__.py",
+      "category": "backend",
+      "purpose": "Stage 5: Vector Database. Public exports: VectorStore, RetrievedMatch, build_chunk_id."
+    },
+    {
+      "path": "backend/app/vectorstore/chroma_client.py",
+      "category": "backend",
+      "purpose": "Persist and search citation-bearing fragments through an injectable collection."
+    },
+    {
+      "path": "backend/app/vectorstore/models.py",
+      "category": "backend",
+      "purpose": "The Stage 5 query-result contract: what comes back from a similarity"
+    },
+    {
+      "path": "backend/pyproject.toml",
+      "category": "backend-tooling",
+      "purpose": "Backend formatter/linter configuration"
+    },
+    {
+      "path": "backend/pytest.ini",
+      "category": "backend-tooling",
+      "purpose": "Test collection defaults and explicit slow/native/model markers"
+    },
+    {
+      "path": "backend/requirements-core.txt",
+      "category": "backend-tooling",
+      "purpose": "Core API/document parsing dependency pins without model/vector runtimes"
+    },
+    {
+      "path": "backend/requirements-dev.txt",
+      "category": "backend-tooling",
+      "purpose": "Full runtime plus developer/test tools"
+    },
+    {
+      "path": "backend/requirements-test.txt",
+      "category": "backend-tooling",
+      "purpose": "Lightweight isolated test/quality/fixture dependencies"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "category": "backend-tooling",
+      "purpose": "Direct full-runtime dependency pins and core dependency include"
+    },
+    {
+      "path": "backend/tests/__init__.py",
+      "category": "backend-tests",
+      "purpose": "Package marker for backend.tests; no resources are initialized on import."
+    },
+    {
+      "path": "backend/tests/api_fakes.py",
+      "category": "backend-tests",
+      "purpose": "Shared lightweight backends; actual parsers, service and HTTP stack remain real."
+    },
+    {
+      "path": "backend/tests/browser_app.py",
+      "category": "backend-tests",
+      "purpose": "Browser-only server: actual API/parsers/SQLite; default Chroma, test embeddings."
+    },
+    {
+      "path": "backend/tests/conftest.py",
+      "category": "backend-tests",
+      "purpose": "Shared pytest fixtures for the whole test suite."
+    },
+    {
+      "path": "backend/tests/fixtures/acceptance/capacity-100.xlsx",
+      "category": "backend-tests",
+      "purpose": "Synthetic workbook fixture: capacity 100; test data, not a user document"
+    },
+    {
+      "path": "backend/tests/fixtures/acceptance/capacity-1000.xlsx",
+      "category": "backend-tests",
+      "purpose": "Synthetic workbook fixture: capacity 1000; test data, not a user document"
+    },
+    {
+      "path": "backend/tests/fixtures/acceptance/hours.xlsx",
+      "category": "backend-tests",
+      "purpose": "Synthetic workbook fixture: hours; test data, not a user document"
+    },
+    {
+      "path": "backend/tests/fixtures/acceptance/operations.pdf",
+      "category": "backend-tests",
+      "purpose": "Synthetic PDF fixture: operations; test data, not a user document"
+    },
+    {
+      "path": "backend/tests/fixtures/acceptance/shipments.xlsx",
+      "category": "backend-tests",
+      "purpose": "Synthetic workbook fixture: shipments; test data, not a user document"
+    },
+    {
+      "path": "backend/tests/fixtures/acceptance/source-data.json",
+      "category": "backend-tests",
+      "purpose": "Independent synthetic acceptance facts for PDF/Excel fixtures"
+    },
+    {
+      "path": "backend/tests/fixtures/generate_fixtures.py",
+      "category": "backend-tests",
+      "purpose": "Generates the synthetic fixture files used by the loader test suite."
+    },
+    {
+      "path": "backend/tests/fixtures/generate_quality_edges.py",
+      "category": "backend-tests",
+      "purpose": "Generate independently reviewable source cells for numeric/security edge cases."
+    },
+    {
+      "path": "backend/tests/fixtures/mvp/README.md",
+      "category": "backend-tests",
+      "purpose": "Synthetic document fixtures"
+    },
+    {
+      "path": "backend/tests/fixtures/mvp/cross-page.pdf",
+      "category": "backend-tests",
+      "purpose": "Synthetic PDF fixture: cross page; test data, not a user document"
+    },
+    {
+      "path": "backend/tests/fixtures/mvp/large.xlsx",
+      "category": "backend-tests",
+      "purpose": "Synthetic workbook fixture: large; test data, not a user document"
+    },
+    {
+      "path": "backend/tests/fixtures/mvp/narrative.pdf",
+      "category": "backend-tests",
+      "purpose": "Synthetic PDF fixture: narrative; test data, not a user document"
+    },
+    {
+      "path": "backend/tests/fixtures/mvp/quarters.xlsx",
+      "category": "backend-tests",
+      "purpose": "Synthetic workbook fixture: quarters; test data, not a user document"
+    },
+    {
+      "path": "backend/tests/fixtures/mvp/summary-detail.xlsx",
+      "category": "backend-tests",
+      "purpose": "Synthetic workbook fixture: summary detail; test data, not a user document"
+    },
+    {
+      "path": "backend/tests/fixtures/prompt_eval_questions.json",
+      "category": "backend-tests",
+      "purpose": "Synthetic question/reference cases for bounded prompt and model diagnostic evaluation"
+    },
+    {
+      "path": "backend/tests/fixtures/quality/cases.json",
+      "category": "backend-tests",
+      "purpose": "Independent quality case definitions and expected source/value requirements"
+    },
+    {
+      "path": "backend/tests/fixtures/quality_edges.xlsx",
+      "category": "backend-tests",
+      "purpose": "Synthetic workbook fixture: quality edges; test data, not a user document"
+    },
+    {
+      "path": "backend/tests/fixtures/sample_report.pdf",
+      "category": "backend-tests",
+      "purpose": "Synthetic PDF fixture: sample report; test data, not a user document"
+    },
+    {
+      "path": "backend/tests/fixtures/sample_report_extended.pdf",
+      "category": "backend-tests",
+      "purpose": "Synthetic PDF fixture: sample report extended; test data, not a user document"
+    },
+    {
+      "path": "backend/tests/fixtures/sample_sales.xlsx",
+      "category": "backend-tests",
+      "purpose": "Synthetic workbook fixture: sample sales; test data, not a user document"
+    },
+    {
+      "path": "backend/tests/fixtures/sample_sales_extended.xlsx",
+      "category": "backend-tests",
+      "purpose": "Synthetic workbook fixture: sample sales extended; test data, not a user document"
+    },
+    {
+      "path": "backend/tests/integration/__init__.py",
+      "category": "backend-tests",
+      "purpose": "Package marker for backend.tests.integration; no resources are initialized on import."
+    },
+    {
+      "path": "backend/tests/integration/test_api.py",
+      "category": "backend-tests",
+      "purpose": "Real HTTP, real fixture parsing, actual pipeline wrappers; ML/DB backends injected."
+    },
+    {
+      "path": "backend/tests/integration/test_api_real_vectorstore.py",
+      "category": "backend-tests",
+      "purpose": "HTTP ingestion/query with real persisted ChromaDB and real parsers, no ML download."
+    },
+    {
+      "path": "backend/tests/integration/test_chunk_quality_invariants.py",
+      "category": "backend-tests",
+      "purpose": "Generic 'chunk quality invariant' test: a property every chunk's"
+    },
+    {
+      "path": "backend/tests/integration/test_cleaner_to_chunker_pipeline.py",
+      "category": "backend-tests",
+      "purpose": "Integration test: Stage 1 loaders -> Stage 2 cleaning -> Stage 3"
+    },
+    {
+      "path": "backend/tests/integration/test_contributor_clarification.py",
+      "category": "backend-tests",
+      "purpose": "Exact user additions, varied order and request-only clarification state."
+    },
+    {
+      "path": "backend/tests/integration/test_counting_correction.py",
+      "category": "backend-tests",
+      "purpose": "Normal UI payloads, acknowledged repair chains and counting-approval boundaries."
+    },
+    {
+      "path": "backend/tests/integration/test_extended_pdf_edge_cases.py",
+      "category": "backend-tests",
+      "purpose": "Integration tests: full pipeline (loader -> cleaning -> chunking)"
+    },
+    {
+      "path": "backend/tests/integration/test_extended_xlsx_edge_cases.py",
+      "category": "backend-tests",
+      "purpose": "Integration tests: full pipeline (loader -> cleaning -> chunking)"
+    },
+    {
+      "path": "backend/tests/integration/test_full_pipeline_to_citations.py",
+      "category": "backend-tests",
+      "purpose": "Integration test: Stage 1 loaders -> ... -> Stage 8 generation ->"
+    },
+    {
+      "path": "backend/tests/integration/test_full_pipeline_to_generation.py",
+      "category": "backend-tests",
+      "purpose": "Integration test: Stage 1 loaders -> ... -> Stage 7 prompt assembly ->"
+    },
+    {
+      "path": "backend/tests/integration/test_full_pipeline_to_prompt.py",
+      "category": "backend-tests",
+      "purpose": "Integration test: Stage 1 loaders -> Stage 2 cleaning -> Stage 3"
+    },
+    {
+      "path": "backend/tests/integration/test_full_pipeline_to_retriever.py",
+      "category": "backend-tests",
+      "purpose": "Integration test: Stage 1 loaders -> Stage 2 cleaning -> Stage 3"
+    },
+    {
+      "path": "backend/tests/integration/test_full_pipeline_to_vectorstore.py",
+      "category": "backend-tests",
+      "purpose": "Integration test: Stage 1 loaders -> Stage 2 cleaning -> Stage 3"
+    },
+    {
+      "path": "backend/tests/integration/test_grouped_continuation.py",
+      "category": "backend-tests",
+      "purpose": "User-reported compound sequence: independent cells, groups and derived labels."
+    },
+    {
+      "path": "backend/tests/integration/test_intent.py",
+      "category": "backend-tests",
+      "purpose": "User-reported wording/population regressions with ordinary UI request shapes."
+    },
+    {
+      "path": "backend/tests/integration/test_loader_to_cleaner_pipeline.py",
+      "category": "backend-tests",
+      "purpose": "Integration test: Stage 1 loaders -> Stage 2 cleaning, using the real"
+    },
+    {
+      "path": "backend/tests/integration/test_mvp.py",
+      "category": "backend-tests",
+      "purpose": "Source-fact business regressions; expectations never come from app extraction."
+    },
+    {
+      "path": "backend/tests/integration/test_narrative_identity.py",
+      "category": "backend-tests",
+      "purpose": "Wrong-subject regressions use real generation wrappers and independent facts."
+    },
+    {
+      "path": "backend/tests/integration/test_page_scope.py",
+      "category": "backend-tests",
+      "purpose": "Page facts independent of application parsing and arithmetic."
+    },
+    {
+      "path": "backend/tests/integration/test_quality_acceptance.py",
+      "category": "backend-tests",
+      "purpose": "Independent source-cell and numeric oracles for the actual production API path."
+    },
+    {
+      "path": "backend/tests/integration/test_readable_answers.py",
+      "category": "backend-tests",
+      "purpose": "User-facing answer regressions against immutable original/source fixtures."
+    },
+    {
+      "path": "backend/tests/integration/test_real_answer_presentation.py",
+      "category": "backend-tests",
+      "purpose": "Focused real-Ollama presentation checks; API runner separately checks retrieval."
+    },
+    {
+      "path": "backend/tests/integration/test_real_embedding_model.py",
+      "category": "backend-tests",
+      "purpose": "Tests that load and run the REAL embedding model (BAAI/bge-base-en-v1.5"
+    },
+    {
+      "path": "backend/tests/integration/test_real_llm_evaluation.py",
+      "category": "backend-tests",
+      "purpose": "Opt-in raw Ollama prompt evaluations with hand-built source contexts."
+    },
+    {
+      "path": "backend/tests/integration/test_real_ollama_smoke.py",
+      "category": "backend-tests",
+      "purpose": "Optional smoke test: sends a real assembled prompt to a real, locally"
+    },
+    {
+      "path": "backend/tests/integration/test_real_retrieval.py",
+      "category": "backend-tests",
+      "purpose": "Tests that exercise the REAL embedding model AND the REAL ChromaDB"
+    },
+    {
+      "path": "backend/tests/integration/test_real_vectorstore.py",
+      "category": "backend-tests",
+      "purpose": "Opt-in tests of real Chroma persistence using supplied test vectors."
+    },
+    {
+      "path": "backend/tests/integration/test_sum_scope.py",
+      "category": "backend-tests",
+      "purpose": "User-reported SUM/scope sequence, with exact source sets and exclusion facts."
+    },
+    {
+      "path": "backend/tests/unit/__init__.py",
+      "category": "backend-tests",
+      "purpose": "Package marker for backend.tests.unit; no resources are initialized on import."
+    },
+    {
+      "path": "backend/tests/unit/test_answer_checks.py",
+      "category": "backend-tests",
+      "purpose": "Reject the actual ambiguous presentation and unrelated-citation regressions."
+    },
+    {
+      "path": "backend/tests/unit/test_api_uploads.py",
+      "category": "backend-tests",
+      "purpose": "Upload byte/name boundaries independent of HTTP or model dependencies."
+    },
+    {
+      "path": "backend/tests/unit/test_chunker.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for app.chunking.chunker.chunk_document -- the Stage 3"
+    },
+    {
+      "path": "backend/tests/unit/test_citation_resolver.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for app.generation.citation_resolver.resolve_citations."
+    },
+    {
+      "path": "backend/tests/unit/test_cleaner.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for app.cleaning.cleaner.clean_document -- the Stage 2"
+    },
+    {
+      "path": "backend/tests/unit/test_config.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for app.core.config."
+    },
+    {
+      "path": "backend/tests/unit/test_embedder.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for app.embedding.embedder.Embedder."
+    },
+    {
+      "path": "backend/tests/unit/test_header_footer.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for app.cleaning.header_footer."
+    },
+    {
+      "path": "backend/tests/unit/test_intent_oracle.py",
+      "category": "backend-tests",
+      "purpose": "Focused runner checks ordinary requests and rejects corrupted real API bodies."
+    },
+    {
+      "path": "backend/tests/unit/test_llm_client.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for app.generation.llm_client."
+    },
+    {
+      "path": "backend/tests/unit/test_loader_dispatch.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for the loader registry (app/loaders/__init__.py)."
+    },
+    {
+      "path": "backend/tests/unit/test_logging_config.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for app.core.logging_config."
+    },
+    {
+      "path": "backend/tests/unit/test_maintenance.py",
+      "category": "backend-tests",
+      "purpose": "Maintenance safety checks for complete offline workspace copies."
+    },
+    {
+      "path": "backend/tests/unit/test_offline_checks.py",
+      "category": "backend-tests",
+      "purpose": "Local test servers remain usable while external socket attempts are refused."
+    },
+    {
+      "path": "backend/tests/unit/test_page_oracle.py",
+      "category": "backend-tests",
+      "purpose": "Actual UI payload replay and independent mutations."
+    },
+    {
+      "path": "backend/tests/unit/test_pdf_loader.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for PdfLoader."
+    },
+    {
+      "path": "backend/tests/unit/test_pdf_loader_edge_cases.py",
+      "category": "backend-tests",
+      "purpose": "Edge-case tests for PdfLoader -- documents with no table, encrypted"
+    },
+    {
+      "path": "backend/tests/unit/test_prompt_builder.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for app.generation.prompt_builder.build_prompt."
+    },
+    {
+      "path": "backend/tests/unit/test_prompt_eval_questions.py",
+      "category": "backend-tests",
+      "purpose": "Schema and consistency checks for the synthetic raw-model question set."
+    },
+    {
+      "path": "backend/tests/unit/test_prose_chunker.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for app.chunking.prose_chunker."
+    },
+    {
+      "path": "backend/tests/unit/test_quality_oracle.py",
+      "category": "backend-tests",
+      "purpose": "Check that basic arithmetic, lost rows and wrong-sheet citations cannot pass."
+    },
+    {
+      "path": "backend/tests/unit/test_readable_values.py",
+      "category": "backend-tests",
+      "purpose": "Exact readable formatting must preserve precision, signs, IDs and literals."
+    },
+    {
+      "path": "backend/tests/unit/test_record_renderer.py",
+      "category": "backend-tests",
+      "purpose": "Structured selection cannot override source values, source order or citations."
+    },
+    {
+      "path": "backend/tests/unit/test_record_store.py",
+      "category": "backend-tests",
+      "purpose": "SQLite persistence and provenance are checked separately from vector storage."
+    },
+    {
+      "path": "backend/tests/unit/test_retriever.py",
+      "category": "backend-tests",
+      "purpose": "Retriever ranking, score, filter and validation contracts."
+    },
+    {
+      "path": "backend/tests/unit/test_row_chunker.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for app.chunking.row_chunker."
+    },
+    {
+      "path": "backend/tests/unit/test_row_cleaning.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for app.cleaning.row_cleaning."
+    },
+    {
+      "path": "backend/tests/unit/test_source_scopes.py",
+      "category": "backend-tests",
+      "purpose": "Alias recognition and replacement share raw spans."
+    },
+    {
+      "path": "backend/tests/unit/test_structured_engine.py",
+      "category": "backend-tests",
+      "purpose": "Independent arithmetic, unit, missing-value and scope counterexamples."
+    },
+    {
+      "path": "backend/tests/unit/test_table_dedup.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for app.cleaning.table_dedup."
+    },
+    {
+      "path": "backend/tests/unit/test_text_cleaning.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for app.cleaning.text_cleaning."
+    },
+    {
+      "path": "backend/tests/unit/test_vectorstore.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for the vector adapter using a functional in-memory collection."
+    },
+    {
+      "path": "backend/tests/unit/test_xlsx_loader.py",
+      "category": "backend-tests",
+      "purpose": "Unit tests for XlsxLoader."
+    },
+    {
+      "path": "backend/tools/__init__.py",
+      "category": "backend-tooling",
+      "purpose": "Command-line verification helpers; never imported by the running API."
+    },
+    {
+      "path": "backend/tools/acceptance_v035/__init__.py",
+      "category": "backend-tooling",
+      "purpose": "Acceptance tooling for independent document and local-model observations."
+    },
+    {
+      "path": "backend/tools/answer_checks.py",
+      "category": "backend-tooling",
+      "purpose": "Conservative fixture checks, alongside human review of saved answer bodies."
+    },
+    {
+      "path": "backend/tools/contributor_oracle.py",
+      "category": "backend-tooling",
+      "purpose": "Independent contributor expectations from the reviewed physical source cells."
+    },
+    {
+      "path": "backend/tools/grouped_oracle.py",
+      "category": "backend-tooling",
+      "purpose": "Reviewed sample-workbook grouped facts; no application planner/calculator imports."
+    },
+    {
+      "path": "backend/tools/intent_oracle.py",
+      "category": "backend-tooling",
+      "purpose": "Independent physical-record expectations for the user-reported intent fixes."
+    },
+    {
+      "path": "backend/tools/mvp_oracle.py",
+      "category": "backend-tooling",
+      "purpose": "Independent raw-XLSX oracle; does not import application parsing/calculation code."
+    },
+    {
+      "path": "backend/tools/offline_pytest.py",
+      "category": "backend-tooling",
+      "purpose": "Run local checks with Python external sockets denied and telemetry opted out."
+    },
+    {
+      "path": "backend/tools/page_checks.py",
+      "category": "backend-tooling",
+      "purpose": "Independent source-population oracle; no application planner imports."
+    },
+    {
+      "path": "backend/tools/presentation_checks.py",
+      "category": "backend-tooling",
+      "purpose": "Independent display-contract checks; never import the application renderer."
+    },
+    {
+      "path": "backend/tools/quality_recheck.py",
+      "category": "backend-tooling",
+      "purpose": "Run source-record acceptance cases against a fresh API index; save full evidence."
+    },
+    {
+      "path": "backend/tools/sum_scope_oracle.py",
+      "category": "backend-tooling",
+      "purpose": "Independent reviewed facts for the original extended workbook; no app imports."
+    },
+    {
+      "path": "backend/tools/verify_intent.py",
+      "category": "backend-tooling",
+      "purpose": "Replay ordinary API requests and check deliberate response corruptions."
+    },
+    {
+      "path": "compose.yaml",
+      "category": "project",
+      "purpose": "Local two-service deployment, host Ollama connection and named persistence volumes"
+    },
+    {
+      "path": "deploy/nginx.conf",
+      "category": "delivery",
+      "purpose": "Static frontend, internal API proxy, health endpoint and response headers"
+    },
+    {
+      "path": "docs/acceptance.md",
+      "category": "documentation",
+      "purpose": "Supported scope and acceptance boundaries"
+    },
+    {
+      "path": "docs/api.md",
+      "category": "documentation",
+      "purpose": "HTTP API"
+    },
+    {
+      "path": "docs/assets/screenshots/desktop-lookup.png",
+      "category": "documentation",
+      "purpose": "Unmodified controlled desktop capture showing North 45000 and Q3 Sales B2 evidence"
+    },
+    {
+      "path": "docs/assets/screenshots/desktop-subtotal.png",
+      "category": "documentation",
+      "purpose": "Unmodified controlled desktop capture showing the Hours subtotal and missing B4 warning"
+    },
+    {
+      "path": "docs/assets/screenshots/gallery.json",
+      "category": "documentation",
+      "purpose": "Curated UI image modes, dimensions and identity hashes; excludes raw capture reports"
+    },
+    {
+      "path": "docs/catalog/backend-tests.md",
+      "category": "documentation",
+      "purpose": "Backend tests, synthetic fixtures and independent oracles"
+    },
+    {
+      "path": "docs/catalog/backend-tooling.md",
+      "category": "documentation",
+      "purpose": "Backend dependencies and verification utilities"
+    },
+    {
+      "path": "docs/catalog/backend.md",
+      "category": "documentation",
+      "purpose": "Backend application and contracts"
+    },
+    {
+      "path": "docs/catalog/delivery.md",
+      "category": "documentation",
+      "purpose": "Deployment, repository checks and release tooling"
+    },
+    {
+      "path": "docs/catalog/documentation.md",
+      "category": "documentation",
+      "purpose": "Documentation, decisions and navigation"
+    },
+    {
+      "path": "docs/catalog/files.json",
+      "category": "documentation",
+      "purpose": "Machine-readable exhaustive public file inventory and purpose/category map"
+    },
+    {
+      "path": "docs/catalog/frontend-delivery.md",
+      "category": "documentation",
+      "purpose": "Frontend build, legal assets and configuration"
+    },
+    {
+      "path": "docs/catalog/frontend-tests.md",
+      "category": "documentation",
+      "purpose": "Browser workflows and answer comparison tools"
+    },
+    {
+      "path": "docs/catalog/frontend.md",
+      "category": "documentation",
+      "purpose": "Frontend application, styles and component tests"
+    },
+    {
+      "path": "docs/catalog/index.md",
+      "category": "documentation",
+      "purpose": "Complete source-file catalog"
+    },
+    {
+      "path": "docs/catalog/project.md",
+      "category": "documentation",
+      "purpose": "Project, licensing and repository configuration"
+    },
+    {
+      "path": "docs/cleanup.md",
+      "category": "documentation",
+      "purpose": "Cleanup — remove generated artifacts without losing source or document data"
+    },
+    {
+      "path": "docs/configuration.md",
+      "category": "documentation",
+      "purpose": "Configuration reference"
+    },
+    {
+      "path": "docs/data-model.md",
+      "category": "documentation",
+      "purpose": "Data, identity and lifecycle"
+    },
+    {
+      "path": "docs/decisions/chunking-strategy.md",
+      "category": "documentation",
+      "purpose": "Row-aware chunks with complete source records"
+    },
+    {
+      "path": "docs/decisions/embedding-model-selection.md",
+      "category": "documentation",
+      "purpose": "Local embedding adapter"
+    },
+    {
+      "path": "docs/decisions/local-llm-selection.md",
+      "category": "documentation",
+      "purpose": "Local bounded narrative generation"
+    },
+    {
+      "path": "docs/decisions/pdf-parser-selection.md",
+      "category": "documentation",
+      "purpose": "Complementary PDF extraction"
+    },
+    {
+      "path": "docs/decisions/region-continuation.md",
+      "category": "documentation",
+      "purpose": "Disclosed Region continuation"
+    },
+    {
+      "path": "docs/decisions/technology-stack.md",
+      "category": "documentation",
+      "purpose": "Small replaceable components"
+    },
+    {
+      "path": "docs/decisions/tooling-version-pinning.md",
+      "category": "documentation",
+      "purpose": "Explicit quality-tool versions"
+    },
+    {
+      "path": "docs/decisions/vector-database-selection.md",
+      "category": "documentation",
+      "purpose": "Embedded Chroma adapter"
+    },
+    {
+      "path": "docs/development.md",
+      "category": "documentation",
+      "purpose": "Development and delivery lifecycle"
+    },
+    {
+      "path": "docs/diagram-register.json",
+      "category": "documentation",
+      "purpose": "Stable figure IDs and authoritative documentation locations for the README visual tour and diagram index"
+    },
+    {
+      "path": "docs/diagrams.md",
+      "category": "documentation",
+      "purpose": "Diagram index and visual conventions"
+    },
+    {
+      "path": "docs/docker.md",
+      "category": "documentation",
+      "purpose": "Docker Compose — install, verify, preserve and recover a local workspace"
+    },
+    {
+      "path": "docs/extending.md",
+      "category": "documentation",
+      "purpose": "Extending the application"
+    },
+    {
+      "path": "docs/fixtures.md",
+      "category": "documentation",
+      "purpose": "Synthetic fixture catalog"
+    },
+    {
+      "path": "docs/index.md",
+      "category": "documentation",
+      "purpose": "Documentation index — guides, decisions and all Markdown files"
+    },
+    {
+      "path": "docs/journey.md",
+      "category": "documentation",
+      "purpose": "Browser-to-answer journey — flow, sequence, data and responsibilities"
+    },
+    {
+      "path": "docs/licensing.md",
+      "category": "documentation",
+      "purpose": "Licensing, third-party notices and corresponding source"
+    },
+    {
+      "path": "docs/limitations.md",
+      "category": "documentation",
+      "purpose": "Known limitations and deployment readiness"
+    },
+    {
+      "path": "docs/openapi.json",
+      "category": "documentation",
+      "purpose": "Exported API schema for the application version; compare with running /openapi.json"
+    },
+    {
+      "path": "docs/operations.md",
+      "category": "documentation",
+      "purpose": "Local operations and recovery"
+    },
+    {
+      "path": "docs/pipeline.md",
+      "category": "documentation",
+      "purpose": "Processing and answer flow"
+    },
+    {
+      "path": "docs/privacy.md",
+      "category": "documentation",
+      "purpose": "Data locality and privacy in the Document Desk MVP"
+    },
+    {
+      "path": "docs/screenshots.md",
+      "category": "documentation",
+      "purpose": "Desktop screenshots — controlled regression and actual-model demonstrations"
+    },
+    {
+      "path": "docs/setup.md",
+      "category": "documentation",
+      "purpose": "Native setup — run without Docker and verify the first answers"
+    },
+    {
+      "path": "docs/technology-stack.md",
+      "category": "documentation",
+      "purpose": "Technology stack, responsibilities and selection rationale"
+    },
+    {
+      "path": "docs/testing.md",
+      "category": "documentation",
+      "purpose": "Testing and evaluation"
+    },
+    {
+      "path": "docs/troubleshooting.md",
+      "category": "documentation",
+      "purpose": "Troubleshooting"
+    },
+    {
+      "path": "docs/ui.md",
+      "category": "documentation",
+      "purpose": "Document Desk MVP — application walkthrough"
+    },
+    {
+      "path": "docs/usage.md",
+      "category": "documentation",
+      "purpose": "Using the workspace"
+    },
+    {
+      "path": "docs/validation.md",
+      "category": "documentation",
+      "purpose": "Verification scope and known limits"
+    },
+    {
+      "path": "frontend/Dockerfile",
+      "category": "frontend-delivery",
+      "purpose": "Container image build and runtime entrypoint for frontend"
+    },
+    {
+      "path": "frontend/e2e/answer-contract.ts",
+      "category": "frontend-tests",
+      "purpose": "Check API and visible DOM against independently reviewed fixture facts"
+    },
+    {
+      "path": "frontend/e2e/control-names.ts",
+      "category": "frontend-tests",
+      "purpose": "Accessible-name contract exercised by the rendered App and Playwright"
+    },
+    {
+      "path": "frontend/e2e/desktop.spec.ts",
+      "category": "frontend-tests",
+      "purpose": "Real desktop DOM/API/screenshot checks. Synthetic documents; controlled models"
+    },
+    {
+      "path": "frontend/e2e/intent.spec.ts",
+      "category": "frontend-tests",
+      "purpose": "User-reported intent failures: ordinary UI payloads, real rendered evidence"
+    },
+    {
+      "path": "frontend/e2e/page-scope.spec.ts",
+      "category": "frontend-tests",
+      "purpose": "Scope populations, original messages and actual confirmation controls"
+    },
+    {
+      "path": "frontend/e2e/workspace.spec.ts",
+      "category": "frontend-tests",
+      "purpose": "Exercise real browser journeys in desktop and mobile-emulated viewports"
+    },
+    {
+      "path": "frontend/eslint.config.js",
+      "category": "frontend-delivery",
+      "purpose": "Apply the agreed TypeScript/React lint rules without changing runtime behavior"
+    },
+    {
+      "path": "frontend/index.html",
+      "category": "frontend-delivery",
+      "purpose": "Frontend HTML entrypoint and mounting element"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "category": "frontend-delivery",
+      "purpose": "Locked frontend dependency graph; used by npm ci"
+    },
+    {
+      "path": "frontend/package.json",
+      "category": "frontend-delivery",
+      "purpose": "Frontend dependency versions, scripts, runtime range and license metadata"
+    },
+    {
+      "path": "frontend/playwright.config.ts",
+      "category": "frontend-delivery",
+      "purpose": "Configure playwright config for this local document assistant"
+    },
+    {
+      "path": "frontend/playwright.desktop.config.ts",
+      "category": "frontend-delivery",
+      "purpose": "Desktop release workflows; historical mobile projects remain available separately"
+    },
+    {
+      "path": "frontend/public/legal.html",
+      "category": "frontend-delivery",
+      "purpose": "Browser-visible license, source availability and model attribution page"
+    },
+    {
+      "path": "frontend/public/license.txt",
+      "category": "frontend-delivery",
+      "purpose": "Exact AGPL license copy served by the frontend"
+    },
+    {
+      "path": "frontend/public/source-info.json",
+      "category": "frontend-delivery",
+      "purpose": "Source-release/license status; operator must configure exact source availability before shared hosting"
+    },
+    {
+      "path": "frontend/src/AnswerContent.test.tsx",
+      "category": "frontend",
+      "purpose": "Verify AnswerContent behavior"
+    },
+    {
+      "path": "frontend/src/AnswerContent.tsx",
+      "category": "frontend",
+      "purpose": "Render server-calculated values, missing-data states and navigable source links"
+    },
+    {
+      "path": "frontend/src/App.test.tsx",
+      "category": "frontend",
+      "purpose": "Verify App behavior"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "category": "frontend",
+      "purpose": "Coordinate document selection, acknowledged chat requests and safe lifecycle actions"
+    },
+    {
+      "path": "frontend/src/ConfirmDialog.test.tsx",
+      "category": "frontend",
+      "purpose": "Verify ConfirmDialog behavior"
+    },
+    {
+      "path": "frontend/src/ConfirmDialog.tsx",
+      "category": "frontend",
+      "purpose": "Confirm destructive actions with deliberate focus and keyboard handling"
+    },
+    {
+      "path": "frontend/src/GroupedAnswers.test.tsx",
+      "category": "frontend",
+      "purpose": "Verify GroupedAnswers behavior"
+    },
+    {
+      "path": "frontend/src/api.test.tsx",
+      "category": "frontend",
+      "purpose": "Verify api behavior"
+    },
+    {
+      "path": "frontend/src/api.ts",
+      "category": "frontend",
+      "purpose": "Define the browser API contract and map transport failures into readable messages"
+    },
+    {
+      "path": "frontend/src/browser-capture.test.tsx",
+      "category": "frontend",
+      "purpose": "Browser capture contracts against the real renderer"
+    },
+    {
+      "path": "frontend/src/intent.test.tsx",
+      "category": "frontend",
+      "purpose": "Render actual API specimens against independent source facts"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "category": "frontend",
+      "purpose": "Mount the document assistant; StrictMode also exercises lifecycle cleanup in development"
+    },
+    {
+      "path": "frontend/src/style.css",
+      "category": "frontend",
+      "purpose": "Style responsive answer/evidence layouts without changing calculation semantics"
+    },
+    {
+      "path": "frontend/src/test-fixtures/intent.ts",
+      "category": "frontend",
+      "purpose": "Actual API specimens; independent expectations are asserted by tests"
+    },
+    {
+      "path": "frontend/src/test-setup.ts",
+      "category": "frontend",
+      "purpose": "Configure test-setup for this local document assistant"
+    },
+    {
+      "path": "frontend/tools/capture-live.mjs",
+      "category": "frontend-tests",
+      "purpose": "Capture actual-model desktop demonstrations in an empty isolated workspace"
+    },
+    {
+      "path": "frontend/tools/capture-live.test.mjs",
+      "category": "frontend-tests",
+      "purpose": "Privacy and truthfulness boundaries for live screenshot capture"
+    },
+    {
+      "path": "frontend/tools/compare-intent.mjs",
+      "category": "frontend-tests",
+      "purpose": "Independent facts plus desktop/mobile equality for the approved intent fix"
+    },
+    {
+      "path": "frontend/tools/compare-intent.test.mjs",
+      "category": "frontend-tests",
+      "purpose": "Checker mutations must reject two identical but incorrect viewports"
+    },
+    {
+      "path": "frontend/tools/compare-pages.mjs",
+      "category": "frontend-tests",
+      "purpose": "Check independent facts before desktop/narrow-viewport parity"
+    },
+    {
+      "path": "frontend/tools/compare-pages.test.mjs",
+      "category": "frontend-tests",
+      "purpose": "Reject shared wrong answers"
+    },
+    {
+      "path": "frontend/tools/compare-ui.mjs",
+      "category": "frontend-tests",
+      "purpose": "Fail closed on incomplete runs or disagreeing desktop/mobile result contracts"
+    },
+    {
+      "path": "frontend/tools/compare-ui.test.mjs",
+      "category": "frontend-tests",
+      "purpose": "Prove the UI comparator rejects coherent wrong answers and missing evidence"
+    },
+    {
+      "path": "frontend/tsconfig.e2e.json",
+      "category": "frontend-delivery",
+      "purpose": "TypeScript compiler scope and strictness: tsconfig.e2e.json"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "category": "frontend-delivery",
+      "purpose": "TypeScript compiler scope and strictness: tsconfig.json"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "category": "frontend-delivery",
+      "purpose": "Configure local API proxying and isolated component-test execution"
+    },
+    {
+      "path": "postman/RAG_MVP.postman_collection.json",
+      "category": "project",
+      "purpose": "Portable API upload/query/conversation examples with local variables and no credentials"
+    },
+    {
+      "path": "release.json",
+      "category": "project",
+      "purpose": "Public application/source revision, license and local deployment facts"
+    },
+    {
+      "path": "tools/catalog.py",
+      "category": "delivery",
+      "purpose": "Generate categorized, exhaustive source-file navigation from the shipped tree."
+    },
+    {
+      "path": "tools/check_repository.py",
+      "category": "delivery",
+      "purpose": "Check source-distribution boundaries and local Markdown links."
+    },
+    {
+      "path": "tools/tests/test_documentation_contracts.py",
+      "category": "delivery",
+      "purpose": "Prevent missing README figures, attribution drift and misleading labels."
+    },
+    {
+      "path": "tools/tests/test_public_release.py",
+      "category": "delivery",
+      "purpose": "Keep public release notes separate from private development history."
+    },
+    {
+      "path": "tools/tests/test_release_tools.py",
+      "category": "delivery",
+      "purpose": "Boundary tests for source navigation and deployment verification helpers."
+    },
+    {
+      "path": "tools/tests/test_ui_gallery.py",
+      "category": "delivery",
+      "purpose": "Protect reviewed UI assets from failed or unsafe capture promotion."
+    },
+    {
+      "path": "tools/ui_gallery.py",
+      "category": "delivery",
+      "purpose": "Validate curated UI images or promote explicitly reviewed live captures."
+    },
+    {
+      "path": "tools/verify_docker.py",
+      "category": "delivery",
+      "purpose": "Verify a dedicated, empty Compose review project without touching native data."
+    },
+    {
+      "path": "tools/verify_release.py",
+      "category": "delivery",
+      "purpose": "One controlled release batch with explicit reports and isolated browser storage."
+    },
+    {
+      "path": "tools/workspace.py",
+      "category": "delivery",
+      "purpose": "Offline Compose backup/restore through streams, avoiding host UID/bind issues."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "screenshots": [
+    {
+      "scenario": "lookup",
+      "file": "desktop-lookup.png",
+      "application_version": "0.3.8",
+      "mode": "controlled browser capture",
+      "width": 1920,
+      "height": 1428,
+      "sha256": "d5df54fe58134d0b1abfd8a189ad9d33743ca882a3b7dfde7e418ef52559e984"
+    },
+    {
+      "scenario": "subtotal",
+      "file": "desktop-subtotal.png",
+      "application_version": "0.3.8",
+      "mode": "controlled browser capture",
+      "width": 1280,
+      "height": 1319,
+      "sha256": "bc035956a0ef1d3a2a4552bd167b5ff77450d97b792fdf33ed5a13f6c011a1a1"
+    }
+  ]
+}

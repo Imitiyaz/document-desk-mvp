@@ -1,0 +1,50 @@
+# Local settings and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+credentials*.json
+
+# Environments, caches and build output
+.venv/
+.test-venv/
+venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+pytest-of-*/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage/
+coverage.xml
+htmlcov/
+dist/
+*.tsbuildinfo
+*.egg-info/
+
+# Managed documents, indexes and generated diagnostics
+data/
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.db
+reports/
+test-results/
+playwright-report/
+*.log
+~$*
+
+# Personal/private notes and operating-system metadata
+private/
+local/
+.DS_Store
+Thumbs.db
+Desktop.ini
+# Retained prior verification batches
+frontend/test-results-prior-*/

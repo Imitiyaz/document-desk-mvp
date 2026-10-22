@@ -1,0 +1,7 @@
+{
+  "application_version": "0.3.8",
+  "source_revision": "0.3.8",
+  "license": "AGPL-3.0-only",
+  "deployment_mode": "local_single_user_one_api_worker",
+  "model_weights_included": false
+}

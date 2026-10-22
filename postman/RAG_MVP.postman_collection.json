@@ -1,0 +1,216 @@
+{
+  "info": {
+    "name": "Tabular RAG MVP",
+    "description": "Non-destructive local API examples. Run on an isolated workspace: upload sample_sales.xlsx, start a chat, ask and follow up. Choose the upload file manually. The API has no authentication. See docs/api.md for all routes, including destructive operations.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "source_file",
+      "value": "sample_sales.xlsx"
+    },
+    {
+      "key": "document_id",
+      "value": ""
+    },
+    {
+      "key": "workspace_revision",
+      "value": "0"
+    },
+    {
+      "key": "conversation_id",
+      "value": ""
+    },
+    {
+      "key": "context_token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Liveness",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/health",
+        "header": []
+      }
+    },
+    {
+      "name": "Readiness",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/ready",
+        "header": []
+      }
+    },
+    {
+      "name": "Supported formats",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/capabilities",
+        "header": []
+      }
+    },
+    {
+      "name": "Upload synthetic fixture",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/documents",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": ""
+            }
+          ]
+        },
+        "description": "Select a synthetic local fixture. The response updates source_file/document_id/revision variables. Duplicate filenames return 409."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+              "if (pm.response.code === 201) { const b=pm.response.json(); for (const k of [\"source_file\",\"document_id\",\"workspace_revision\"]) pm.collectionVariables.set(k,b[k]); }"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "List indexed documents",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/documents",
+        "header": []
+      }
+    },
+    {
+      "name": "Workspace revision",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/workspace",
+        "header": []
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if(pm.response.code===200) pm.collectionVariables.set(\"workspace_revision\",pm.response.json().revision);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Start document chat",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/conversations",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"source_file\": \"{{source_file}}\",\n  \"document_id\": \"{{document_id}}\",\n  \"workspace_revision\": {{workspace_revision}}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if(pm.response.code===200) pm.collectionVariables.set(\"conversation_id\",pm.response.json().conversation_id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ask in document chat",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/query",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"What was the Q3 revenue for North in the Q3 Sales sheet?\",\n  \"source_file\": \"{{source_file}}\",\n  \"document_id\": \"{{document_id}}\",\n  \"workspace_revision\": {{workspace_revision}},\n  \"conversation_id\": \"{{conversation_id}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if(pm.response.code===200) pm.collectionVariables.set(\"context_token\",pm.response.json().context_token);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Follow up with acknowledged context",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/query",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"And South?\",\n  \"source_file\": \"{{source_file}}\",\n  \"document_id\": \"{{document_id}}\",\n  \"workspace_revision\": {{workspace_revision}},\n  \"conversation_id\": \"{{conversation_id}}\",\n  \"context_token\": \"{{context_token}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if(pm.response.code===200) pm.collectionVariables.set(\"context_token\",pm.response.json().context_token);"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# Author: Imitiyaz and AI Agent
+# Direct package pins; transitive dependencies remain resolver/platform dependent.
+-r requirements-core.txt
+langchain==1.4.5
+langchain-community==0.4.2
+sentence-transformers==6.1.0
+chromadb==1.5.9

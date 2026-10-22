@@ -1,0 +1,46 @@
+# Source/build only. No images are pushed and no model weights are bundled.
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    init: true
+    restart: unless-stopped
+    environment:
+      APP_ENV: production
+      LOG_LEVEL: INFO
+      OLLAMA_BASE_URL: ${DOCKER_OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-llama3.1:8b-instruct-q4_K_M}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-BAAI/bge-base-en-v1.5}
+      HF_HOME: /app/cache/huggingface
+      CHROMA_PERSIST_DIR: /app/data/chroma
+      UPLOAD_TEMP_DIR: /app/data/uploads
+      CORS_ALLOWED_ORIGINS: http://127.0.0.1:${DESK_PORT:-8080},http://localhost:${DESK_PORT:-8080}
+      ANONYMIZED_TELEMETRY: "False"
+      OTEL_SDK_DISABLED: "true"
+      DO_NOT_TRACK: "1"
+    volumes:
+      - workspace:/app/data
+      - model_cache:/app/cache
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+    stop_grace_period: 30s
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    init: true
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${DESK_PORT:-8080}:8080"
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  workspace:
+  model_cache:

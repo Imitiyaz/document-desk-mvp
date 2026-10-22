@@ -1,0 +1,672 @@
+{
+  "oracle": "Independent physical-source expectations. Region continuation is a disclosed interpretation; raw blanks and anchor coordinates remain checked.",
+  "cases": [
+    {
+      "id": "north_all_real_records",
+      "request": {
+        "question": "What was the Q3 revenue for North?",
+        "source_file": "sample_sales_extended.xlsx",
+        "top_k": 1
+      },
+      "expected": {
+        "status": "answered",
+        "records": [
+          [
+            "Merged Region",
+            2,
+            "Q3 Revenue",
+            "45000"
+          ],
+          [
+            "Merged Region",
+            3,
+            "Q3 Revenue",
+            "47000"
+          ],
+          [
+            "Sparse Data",
+            2,
+            "Q3 Revenue",
+            "45000"
+          ],
+          [
+            "Sparse Data",
+            3,
+            "Q3 Revenue",
+            "38000"
+          ]
+        ],
+        "result": null,
+        "continuations": {
+          "4": {
+            "Region": {
+              "value": "North",
+              "original_value": null,
+              "original_cell": "A3",
+              "anchor_cell": "A2",
+              "anchor_row": 2,
+              "policy": "region-continuation-v1"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "vague_q3_no_invented_total",
+      "request": {
+        "question": "What was the Q3 revenue?",
+        "source_file": "sample_sales_extended.xlsx",
+        "top_k": 1
+      },
+      "expected": {
+        "status": "incomplete",
+        "records": [
+          [
+            "Merged Region",
+            2,
+            "Q3 Revenue",
+            "45000"
+          ],
+          [
+            "Merged Region",
+            3,
+            "Q3 Revenue",
+            "47000"
+          ],
+          [
+            "Merged Region",
+            4,
+            "Q3 Revenue",
+            "38000"
+          ],
+          [
+            "Merged Region",
+            5,
+            "Q3 Revenue",
+            "39000"
+          ],
+          [
+            "Sparse Data",
+            2,
+            "Q3 Revenue",
+            "45000"
+          ],
+          [
+            "Sparse Data",
+            3,
+            "Q3 Revenue",
+            "38000"
+          ],
+          [
+            "Sparse Data",
+            4,
+            "Q3 Revenue",
+            null
+          ],
+          [
+            "Sparse Data",
+            5,
+            "Q3 Revenue",
+            "41000"
+          ],
+          [
+            "Sparse Data",
+            6,
+            "Q3 Revenue",
+            "22000"
+          ]
+        ],
+        "labels": [
+          "North",
+          "North",
+          "South",
+          "South",
+          "North",
+          "North",
+          "East",
+          "West",
+          "West"
+        ],
+        "result": null,
+        "continuations": {
+          "6": {
+            "Region": {
+              "value": "North",
+              "original_value": null,
+              "original_cell": "A3",
+              "anchor_cell": "A2",
+              "anchor_row": 2,
+              "policy": "region-continuation-v1"
+            }
+          },
+          "9": {
+            "Region": {
+              "value": "West",
+              "original_value": null,
+              "original_cell": "A6",
+              "anchor_cell": "A5",
+              "anchor_row": 5,
+              "policy": "region-continuation-v1"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "merged_all_cells_and_total",
+      "request": {
+        "question": "Total Q3 revenue in Merged Region",
+        "source_file": "sample_sales_extended.xlsx",
+        "top_k": 1
+      },
+      "expected": {
+        "status": "answered",
+        "records": [
+          [
+            "Merged Region",
+            2,
+            "Q3 Revenue",
+            "45000"
+          ],
+          [
+            "Merged Region",
+            3,
+            "Q3 Revenue",
+            "47000"
+          ],
+          [
+            "Merged Region",
+            4,
+            "Q3 Revenue",
+            "38000"
+          ],
+          [
+            "Merged Region",
+            5,
+            "Q3 Revenue",
+            "39000"
+          ]
+        ],
+        "result": {
+          "Q3 Revenue": "169000"
+        },
+        "continuations": {}
+      }
+    },
+    {
+      "id": "sparse_all_cells_including_blank",
+      "request": {
+        "question": "Show Q3 revenue",
+        "source_file": "sample_sales_extended.xlsx",
+        "top_k": 1,
+        "sheet_or_page": "Sparse Data"
+      },
+      "expected": {
+        "status": "incomplete",
+        "records": [
+          [
+            "Sparse Data",
+            2,
+            "Q3 Revenue",
+            "45000"
+          ],
+          [
+            "Sparse Data",
+            3,
+            "Q3 Revenue",
+            "38000"
+          ],
+          [
+            "Sparse Data",
+            4,
+            "Q3 Revenue",
+            null
+          ],
+          [
+            "Sparse Data",
+            5,
+            "Q3 Revenue",
+            "41000"
+          ],
+          [
+            "Sparse Data",
+            6,
+            "Q3 Revenue",
+            "22000"
+          ]
+        ],
+        "result": null,
+        "labels": [
+          "North",
+          "North",
+          "East",
+          "West",
+          "West"
+        ],
+        "continuations": {
+          "2": {
+            "Region": {
+              "value": "North",
+              "original_value": null,
+              "original_cell": "A3",
+              "anchor_cell": "A2",
+              "anchor_row": 2,
+              "policy": "region-continuation-v1"
+            }
+          },
+          "5": {
+            "Region": {
+              "value": "West",
+              "original_value": null,
+              "original_cell": "A6",
+              "anchor_cell": "A5",
+              "anchor_row": 5,
+              "policy": "region-continuation-v1"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "sparse_available_value_subtotal",
+      "request": {
+        "question": "Total Q3 revenue in Sparse Data",
+        "source_file": "sample_sales_extended.xlsx",
+        "top_k": 1
+      },
+      "expected": {
+        "status": "incomplete",
+        "records": [
+          [
+            "Sparse Data",
+            2,
+            "Q3 Revenue",
+            "45000"
+          ],
+          [
+            "Sparse Data",
+            3,
+            "Q3 Revenue",
+            "38000"
+          ],
+          [
+            "Sparse Data",
+            4,
+            "Q3 Revenue",
+            null
+          ],
+          [
+            "Sparse Data",
+            5,
+            "Q3 Revenue",
+            "41000"
+          ],
+          [
+            "Sparse Data",
+            6,
+            "Q3 Revenue",
+            "22000"
+          ]
+        ],
+        "result": {
+          "Q3 Revenue": "146000"
+        },
+        "partial": true,
+        "excluded_cells": [
+          {
+            "number": 3,
+            "field": "Q3 Revenue",
+            "cell": "B4"
+          }
+        ],
+        "continuations": {
+          "2": {
+            "Region": {
+              "value": "North",
+              "original_value": null,
+              "original_cell": "A3",
+              "anchor_cell": "A2",
+              "anchor_row": 2,
+              "policy": "region-continuation-v1"
+            }
+          },
+          "5": {
+            "Region": {
+              "value": "West",
+              "original_value": null,
+              "original_cell": "A6",
+              "anchor_cell": "A5",
+              "anchor_row": 5,
+              "policy": "region-continuation-v1"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "three_region_total",
+      "request": {
+        "question": "Combined Q3 revenue for North, South, and East in Q3 Sales",
+        "source_file": "sample_sales.xlsx",
+        "top_k": 1
+      },
+      "expected": {
+        "status": "answered",
+        "records": [
+          [
+            "Q3 Sales",
+            2,
+            "Q3 Revenue",
+            "45000"
+          ],
+          [
+            "Q3 Sales",
+            3,
+            "Q3 Revenue",
+            "38000"
+          ],
+          [
+            "Q3 Sales",
+            4,
+            "Q3 Revenue",
+            "41000"
+          ]
+        ],
+        "result": {
+          "Q3 Revenue": "124000"
+        },
+        "continuations": {}
+      }
+    },
+    {
+      "id": "full_comparison",
+      "request": {
+        "question": "Among North, South, and East, which region had the largest revenue increase from Q3 to Q4?",
+        "source_file": "sample_sales.xlsx",
+        "top_k": 1
+      },
+      "expected": {
+        "status": "answered",
+        "records": [
+          [
+            "Q3 Sales",
+            2,
+            "Q3 Revenue",
+            "45000"
+          ],
+          [
+            "Q3 Sales",
+            3,
+            "Q3 Revenue",
+            "38000"
+          ],
+          [
+            "Q3 Sales",
+            4,
+            "Q3 Revenue",
+            "41000"
+          ]
+        ],
+        "result": {
+          "1": "7000",
+          "2": "1500",
+          "3": "3000"
+        },
+        "continuations": {}
+      }
+    },
+    {
+      "id": "pdf_exact_41000",
+      "request": {
+        "question": "What was the Q3 revenue for East in the report?",
+        "source_file": "sample_report.pdf",
+        "top_k": 1
+      },
+      "expected": {
+        "status": "answered",
+        "records": [
+          [
+            "page_1",
+            "table_1_row_3",
+            "Q3 Revenue",
+            "41000"
+          ]
+        ],
+        "result": null,
+        "continuations": {}
+      }
+    },
+    {
+      "id": "wide_original_record",
+      "request": {
+        "question": "What is the renewal date for order ORD-1001 in Wide Row?",
+        "source_file": "sample_sales_extended.xlsx",
+        "top_k": 1
+      },
+      "expected": {
+        "status": "answered",
+        "records": [
+          [
+            "Wide Row",
+            2,
+            "Renewal Date",
+            "2027-01-15"
+          ]
+        ],
+        "result": null,
+        "continuations": {}
+      }
+    },
+    {
+      "id": "unknown_entity_no_subset",
+      "request": {
+        "question": "What was Q3 revenue for North and Atlantis?",
+        "source_file": "sample_sales_extended.xlsx",
+        "top_k": 1
+      },
+      "expected": {
+        "status": "clarification_required",
+        "records": [],
+        "result": null,
+        "continuations": {}
+      }
+    },
+    {
+      "id": "currency_no_conversion",
+      "request": {
+        "question": "Sum Amount",
+        "source_file": "sample_sales_extended.xlsx",
+        "top_k": 1,
+        "sheet_or_page": "Unicode Currency",
+        "fields": [
+          "Amount"
+        ],
+        "operation": "sum"
+      },
+      "expected": {
+        "status": "clarification_required",
+        "records": [
+          [
+            "Unicode Currency",
+            2,
+            "Amount",
+            "\u20ac45,000"
+          ],
+          [
+            "Unicode Currency",
+            3,
+            "Amount",
+            "\u00a33,200"
+          ],
+          [
+            "Unicode Currency",
+            4,
+            "Amount",
+            "\u00a5500,000"
+          ]
+        ],
+        "result": null,
+        "continuations": {}
+      }
+    },
+    {
+      "id": "decimal_and_negative_sum",
+      "request": {
+        "question": "Sum Amount",
+        "source_file": "quality_edges.xlsx",
+        "top_k": 1,
+        "sheet_or_page": "Amounts",
+        "fields": [
+          "Amount"
+        ],
+        "operation": "sum"
+      },
+      "expected": {
+        "status": "answered",
+        "records": [
+          [
+            "Amounts",
+            2,
+            "Amount",
+            "0.1"
+          ],
+          [
+            "Amounts",
+            3,
+            "Amount",
+            "0.2"
+          ],
+          [
+            "Amounts",
+            4,
+            "Amount",
+            "-0.05"
+          ]
+        ],
+        "result": {
+          "Amount": "0.25"
+        },
+        "continuations": {}
+      }
+    },
+    {
+      "id": "all_minimum_ties",
+      "request": {
+        "question": "Minimum Amount",
+        "source_file": "quality_edges.xlsx",
+        "top_k": 1,
+        "sheet_or_page": "Ties",
+        "fields": [
+          "Amount"
+        ],
+        "operation": "minimum"
+      },
+      "expected": {
+        "status": "answered",
+        "records": [
+          [
+            "Ties",
+            2,
+            "Amount",
+            "10"
+          ],
+          [
+            "Ties",
+            3,
+            "Amount",
+            "10"
+          ],
+          [
+            "Ties",
+            4,
+            "Amount",
+            "20"
+          ]
+        ],
+        "result": {
+          "Amount": "10"
+        },
+        "continuations": {}
+      }
+    },
+    {
+      "id": "zero_baseline_no_percentage",
+      "request": {
+        "question": "Percentage growth",
+        "source_file": "quality_edges.xlsx",
+        "top_k": 1,
+        "sheet_or_page": "Growth",
+        "fields": [
+          "Before",
+          "After"
+        ],
+        "operation": "growth_percent"
+      },
+      "expected": {
+        "status": "incomplete",
+        "records": [
+          [
+            "Growth",
+            2,
+            "Before",
+            "100"
+          ],
+          [
+            "Growth",
+            3,
+            "Before",
+            "0"
+          ]
+        ],
+        "result": null,
+        "continuations": {}
+      }
+    },
+    {
+      "id": "mixed_units_no_sum",
+      "request": {
+        "question": "Sum Amount",
+        "source_file": "quality_edges.xlsx",
+        "top_k": 1,
+        "sheet_or_page": "Mixed Units",
+        "fields": [
+          "Amount"
+        ],
+        "operation": "sum"
+      },
+      "expected": {
+        "status": "clarification_required",
+        "records": [
+          [
+            "Mixed Units",
+            2,
+            "Amount",
+            "USD 10"
+          ],
+          [
+            "Mixed Units",
+            3,
+            "Amount",
+            "EUR 20"
+          ]
+        ],
+        "result": null,
+        "continuations": {}
+      }
+    },
+    {
+      "id": "ambiguous_cross_sheet_total",
+      "request": {
+        "question": "Total Q3 revenue",
+        "source_file": "sample_sales_extended.xlsx",
+        "top_k": 1
+      },
+      "expected": {
+        "status": "clarification_required",
+        "records": [],
+        "result": null,
+        "continuations": {}
+      }
+    }
+  ]
+}
