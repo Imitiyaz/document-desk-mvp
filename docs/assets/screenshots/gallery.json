@@ -5,19 +5,19 @@
       "scenario": "lookup",
       "file": "desktop-lookup.png",
       "application_version": "0.3.8",
-      "mode": "controlled browser capture",
-      "width": 1920,
-      "height": 1428,
-      "sha256": "d5df54fe58134d0b1abfd8a189ad9d33743ca882a3b7dfde7e418ef52559e984"
+      "mode": "manual application capture",
+      "width": 1467,
+      "height": 1210,
+      "sha256": "8d4b35d98791638155f360a0616ff343d2d28f86439f44dd912ce0a361929957"
     },
     {
       "scenario": "subtotal",
       "file": "desktop-subtotal.png",
       "application_version": "0.3.8",
-      "mode": "controlled browser capture",
-      "width": 1280,
-      "height": 1319,
-      "sha256": "bc035956a0ef1d3a2a4552bd167b5ff77450d97b792fdf33ed5a13f6c011a1a1"
+      "mode": "manual application capture",
+      "width": 1449,
+      "height": 1264,
+      "sha256": "ec0a863f2c7924334e37aa4e587683c4eee3702d6a7593190fb53c3dcaca54f6"
     }
   ]
 }

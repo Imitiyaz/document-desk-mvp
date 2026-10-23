@@ -10,13 +10,13 @@ Choose a document in the library, ask a question in the main panel, then open th
 
 ![North revenue of 45,000 with Q3 Sales row 2 and original cell B2.](assets/screenshots/desktop-lookup.png)
 
-North revenue of 45,000 with Q3 Sales row 2 and original cell B2. **Capture mode:** controlled browser capture. Application 0.3.8; captured width 1920 pixels. Images are unmodified.
+North revenue of 45,000 with Q3 Sales row 2 and original cell B2. **Capture mode:** manual application capture. Application 0.3.8; image width 1467 pixels. Runtime configuration was not recorded.
 
 **Figure UI-02 — Available-value subtotal with the missing source cell disclosed.**
 
 ![Hours subtotal of 15.75 with missing B4 excluded and recorded zero retained.](assets/screenshots/desktop-subtotal.png)
 
-Hours subtotal of 15.75 with missing B4 excluded and recorded zero retained. **Capture mode:** controlled browser capture. Application 0.3.8; captured width 1280 pixels. Images are unmodified.
+Hours subtotal of 15.75 with missing B4 excluded and recorded zero retained. **Capture mode:** manual application capture. Application 0.3.8; image width 1449 pixels. Runtime configuration was not recorded.
 
 ## Read the answer and inspect its source
 
@@ -30,6 +30,8 @@ Hours subtotal of 15.75 with missing B4 excluded and recorded zero retained. **C
 Use [native setup](setup.md) or [Docker deployment](docker.md), then follow the [browser smoke test](setup.md#8-verify-the-application-in-the-browser). For automated screenshots, use [the capture guide](screenshots.md). Raw captures stay in ignored reports; only reviewed images are copied into this gallery.
 
 A caption marked **controlled browser capture** means the real UI/API/source records were exercised with explicit embedding/vector/model test adapters. It is not actual-model throughput evidence. An **actual-model application capture** uses the ordinary local services; structured calculations still do not call the model. Real-model behavior has its own [verification scope](validation.md).
+
+A **manual application capture** is an operator-supplied screenshot reviewed for its displayed content. Its model and embedding configuration has not been verified, and its PNG width is not a recorded browser viewport. It illustrates the interface and source evidence without establishing model performance or automated capture success.
 
 ## Maintain the gallery
 

@@ -85,6 +85,14 @@ Check that the selected document, effective question, answer, warnings and citat
 Keep the corresponding source revision and model/runtime mode with each chosen image. If a result was degraded, describe it honestly or capture a separately verified successful request; never edit an image to invent an answer. Raw manifests/logs can contain more content than the image and need their own privacy review. Use [cleanup](cleanup.md) to retire unneeded local artifacts after retention/recovery needs are satisfied.
 
 
+## Manually supplied screenshots
+
+The current lookup and subtotal gallery images are manually supplied application screenshots. Their displayed synthetic values and source evidence were reviewed, but no automated capture manifest establishes their model or embedding configuration. They are labelled **manual application capture**; the recorded dimensions describe the PNG files rather than a verified browser viewport.
+
+Replacing a gallery PNG also requires updating its reviewed mode, dimensions and SHA-256 in `docs/assets/screenshots/gallery.json`, and regenerating `docs/ui.md` with `tools/ui_gallery.py`'s `render_gallery` function. Review the README caption when capture provenance changes. Commit these related files together; changing only the PNG deliberately fails the gallery identity checks. Do not label a manual upload as a passed actual-model capture without the corresponding evidence.
+
+For future repeatable captures, use the manifest-backed capture and promotion workflow below. It updates the gallery records and walkthrough together after validation.
+
 ## Promote reviewed images into the public gallery
 
 Capture is opt-in and separate from normal setup/testing. Tests and capture commands do not stage files or publish screenshots.

@@ -96,6 +96,18 @@ Choose a document in the library, ask a question in the main panel, then open th
 """
     for item in manifest["screenshots"]:
         identifier, title, description, _ = DEFINITIONS[item["scenario"]]
+        if item["mode"] == "manual application capture":
+            capture_detail = (
+                "; image width "
+                + str(item["width"])
+                + " pixels. Runtime configuration was not recorded.\n\n"
+            )
+        else:
+            capture_detail = (
+                "; captured width "
+                + str(item["width"])
+                + " pixels. Images are unmodified.\n\n"
+            )
         text += (
             "**Figure "
             + identifier
@@ -112,9 +124,7 @@ Choose a document in the library, ask a question in the main panel, then open th
             + item["mode"]
             + ". Application "
             + item["application_version"]
-            + "; captured width "
-            + str(item["width"])
-            + " pixels. Images are unmodified.\n\n"
+            + capture_detail
         )
     text += """## Read the answer and inspect its source
 
@@ -128,6 +138,8 @@ Choose a document in the library, ask a question in the main panel, then open th
 Use [native setup](setup.md) or [Docker deployment](docker.md), then follow the [browser smoke test](setup.md#8-verify-the-application-in-the-browser). For automated screenshots, use [the capture guide](screenshots.md). Raw captures stay in ignored reports; only reviewed images are copied into this gallery.
 
 A caption marked **controlled browser capture** means the real UI/API/source records were exercised with explicit embedding/vector/model test adapters. It is not actual-model throughput evidence. An **actual-model application capture** uses the ordinary local services; structured calculations still do not call the model. Real-model behavior has its own [verification scope](validation.md).
+
+A **manual application capture** is an operator-supplied screenshot reviewed for its displayed content. Its model and embedding configuration has not been verified, and its PNG width is not a recorded browser viewport. It illustrates the interface and source evidence without establishing model performance or automated capture success.
 
 ## Maintain the gallery
 
@@ -169,6 +181,7 @@ def check(root: Path = ROOT) -> list[str]:
             if item["mode"] not in {
                 "controlled browser capture",
                 "actual-model application capture",
+                "manual application capture",
             }:
                 raise ValueError("Unknown execution mode")
             if item["application_version"] != "0.3.8":

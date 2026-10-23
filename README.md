@@ -26,7 +26,7 @@ The desktop workspace brings the document library, question and source evidence 
 
 ![Document Desk MVP showing North revenue of 45,000 and its Q3 Sales B2 source](docs/assets/screenshots/desktop-lookup.png)
 
-This is an unmodified application **0.3.8** browser capture using synthetic documents and controlled model/embedding adapters. It demonstrates the interface and source-cell relationship, not real-model performance. The focus outline records keyboard citation navigation.
+This is an operator-supplied application **0.3.8** screenshot using synthetic documents. It shows the interface and source-cell relationship. The model and embedding configuration was not recorded with this manual capture; the image does not establish real-model performance.
 
 See the [UI walkthrough](docs/ui.md) for the subtotal screen, capture context and instructions to create your own screenshots.
 

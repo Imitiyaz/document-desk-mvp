@@ -5,9 +5,10 @@ Author: Imitiyaz and AI Agent
 
 import importlib.util
 import json
-import shutil
+import struct
 import tempfile
 import unittest
+import zlib
 from pathlib import Path
 from unittest.mock import patch
 
@@ -17,18 +18,53 @@ GALLERY = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(GALLERY)
 
 
+def capture_png(width=1920):
+    """Build a valid test PNG independently of the documentation screenshots."""
+
+    def chunk(kind, data):
+        return (
+            struct.pack(">I", len(data))
+            + kind
+            + data
+            + struct.pack(">I", zlib.crc32(kind + data) & 0xFFFFFFFF)
+        )
+
+    return (
+        b"\x89PNG\r\n\x1a\n"
+        + chunk(b"IHDR", struct.pack(">IIBBBBB", width, 1, 8, 2, 0, 0, 0))
+        + chunk(b"IDAT", zlib.compress(b"\x00" + b"\x39\x7b\x99" * width))
+        + chunk(b"IEND", b"")
+    )
+
+
 class UIGalleryTests(unittest.TestCase):
     def fixture(self, folder):
         root = folder / "source"
         target = root / GALLERY.ASSETS
-        target.parent.mkdir(parents=True)
-        shutil.copytree(ROOT / GALLERY.ASSETS, target)
+        target.mkdir(parents=True)
+        current = {"schema_version": 1, "screenshots": []}
+        for scenario, width in (("lookup", 1920), ("subtotal", 1280)):
+            name = GALLERY.DEFINITIONS[scenario][3]
+            image = target / name
+            image.write_bytes(capture_png(width))
+            current["screenshots"].append(
+                {
+                    "scenario": scenario,
+                    "file": name,
+                    "application_version": "0.3.8",
+                    "mode": "controlled browser capture",
+                    **GALLERY.png_info(image),
+                }
+            )
+        (target / "gallery.json").write_text(
+            json.dumps(current), encoding="utf-8"
+        )
         (root / "docs/ui.md").write_text(
-            (ROOT / "docs/ui.md").read_text(encoding="utf-8"), encoding="utf-8"
+            GALLERY.render_gallery(current), encoding="utf-8"
         )
         run = folder / "capture run"
         run.mkdir()
-        shutil.copyfile(target / "desktop-lookup.png", run / "1920-lookup.png")
+        (run / "1920-lookup.png").write_bytes(capture_png())
         manifest = {
             "application_version": "0.3.8",
             "operator_mode": "actual_model_required_for_narrative",
@@ -47,6 +83,37 @@ class UIGalleryTests(unittest.TestCase):
 
     def test_shipped_images_and_gallery_are_consistent(self):
         self.assertEqual(GALLERY.check(ROOT), [])
+
+    def test_manual_capture_still_requires_matching_image_identity(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root, _, _ = self.fixture(Path(tmp))
+            path = root / GALLERY.ASSETS / "gallery.json"
+            manifest = json.loads(path.read_text(encoding="utf-8"))
+            manifest["screenshots"][0]["mode"] = "manual application capture"
+            path.write_text(json.dumps(manifest), encoding="utf-8")
+            (root / "docs/ui.md").write_text(
+                GALLERY.render_gallery(manifest), encoding="utf-8"
+            )
+            self.assertEqual(GALLERY.check(root), [])
+            image = root / GALLERY.ASSETS / "desktop-lookup.png"
+            image.write_bytes(capture_png(width=1440))
+            before = image.read_bytes()
+            self.assertIn(
+                "Image identity/dimensions differ: desktop-lookup.png",
+                GALLERY.check(root),
+            )
+            self.assertEqual(image.read_bytes(), before)
+
+    def test_unknown_capture_mode_is_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root, _, _ = self.fixture(Path(tmp))
+            path = root / GALLERY.ASSETS / "gallery.json"
+            manifest = json.loads(path.read_text(encoding="utf-8"))
+            manifest["screenshots"][0]["mode"] = "unverified actual-model result"
+            path.write_text(json.dumps(manifest), encoding="utf-8")
+            self.assertIn(
+                "Invalid gallery: Unknown execution mode", GALLERY.check(root)
+            )
 
     def test_missing_review_confirmation_never_changes_source(self):
         with tempfile.TemporaryDirectory() as tmp:
